@@ -45,9 +45,9 @@ android {
 def hilt_version = '2.38.1'
 def rxJavaVersion = '2.1.1'
 def moshiVersion = '1.9.2'
-def okhttpVersion = '3.8.1'
+def okhttpVersion = '4.10.0'
 def glideVersion = '4.13.0'
-def retrofitVersion = '2.7.0'
+def retrofitVersion = '2.9.0'
 def roomVersion = '2.4.2'
 def nav_version = "2.4.2"
 
