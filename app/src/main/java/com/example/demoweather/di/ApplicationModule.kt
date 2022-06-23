@@ -7,6 +7,10 @@ import com.example.demoweather.data.api.city.CityApiHelper
 import com.example.demoweather.data.api.city.CityApiHelperImpl
 import com.example.demoweather.data.api.weather.WeatherApiHelper
 import com.example.demoweather.data.api.weather.WeatherApiHelperImpl
+import com.example.demoweather.repository.city.CityRepository
+import com.example.demoweather.repository.city.CityRepositoryImpl
+import com.example.demoweather.repository.weather.WeatherRepository
+import com.example.demoweather.repository.weather.WeatherRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -28,8 +32,8 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() : OkHttpClient {
-         var okhttp = if (BuildConfig.DEBUG) {
+    fun provideOkHttpClient(): OkHttpClient {
+        var okhttp = if (BuildConfig.DEBUG) {
             val interceptor = HttpLoggingInterceptor { message -> Log.d("Retrofit", message) }
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder()
@@ -38,7 +42,7 @@ class ApplicationModule {
         } else OkHttpClient
             .Builder()
             .build()
-        return  okhttp
+        return okhttp
     }
 
     @Provides
@@ -67,5 +71,11 @@ class ApplicationModule {
     @Singleton
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
+    @Provides
+    @Singleton
+    fun provideWeatherRepository(weatherApiHelper: WeatherApiHelper): WeatherRepository = WeatherRepositoryImpl(weatherApiHelper)
 
+    @Provides
+    @Singleton
+    fun provideCityRepository(cityApiHelper: CityApiHelper): CityRepository = CityRepositoryImpl(cityApiHelper)
 }

@@ -15,4 +15,6 @@
     <color name="colorWhite">#E7E8EC</color>
     <color name="colorOffWhite">#B8BCCA</color>
     <color name="colorLightBlue">#333D5F</color>
+    <color name="gray_bg">#DFDEDE</color>
+
 </resources>

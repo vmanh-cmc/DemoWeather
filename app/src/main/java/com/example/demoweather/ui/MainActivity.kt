@@ -20,13 +20,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val viewModel: MainViewModel by viewModels()
 
     override fun initView() {
-        viewModel.getCurrentData()
     }
 
+
     override fun setupObserver() {
-        viewModel.weatherResponse.observe(this) {
-            Log.d("AnhVM", "setupObserver: $it")
-            
-        }
     }
 }

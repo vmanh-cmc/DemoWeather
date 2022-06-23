@@ -13,7 +13,8 @@ interface ApiService {
     @GET("data/2.5/onecall?exclude=minutely,daily,alerts&appid=e5a0cb24e205f2a69947b99073200878")
     fun getWeatherData(
         @Query("lon") lon: Double,
-        @Query("lat") lat: Double
+        @Query("lat") lat: Double,
+        @Query("units") units: String = "imperial"
     ): Observable<WeatherResponse>
 
 }
